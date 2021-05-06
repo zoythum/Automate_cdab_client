@@ -1,0 +1,10 @@
+{
+	"containername" : "testsite",
+	"config" : null,
+	"scenarios" : [
+		"TS01"
+	],
+	"targets" : [
+		"SciHub"
+	]
+}
