@@ -2,6 +2,7 @@ import docker
 import os
 import tarfile
 import json
+from sys import exit
 
 def pull_image(client):
     """
@@ -60,10 +61,25 @@ def load_config(client, data):
         cwd = os.getcwd()
         copy_to(client, "{}/config.yaml".format(cwd), "{}:/config.yaml".format(data["containername"]))
 
+def set_username_pass(username, password):
+    with open('config.yaml', 'r') as file :
+        filedata = file.read()
+
+    filedata = filedata.replace('__USERNAME__', username)
+    filedata = filedata.replace('__PASSWORD__', password)
+
+    with open('config.yaml', 'w') as file:
+        file.write(filedata)
 
 def main():
     with open("config.json") as f:
         data = json.load(f)
+
+    if not data["email"] or not data["password"]:
+        print("Please make sure you added your email and password into the configuration file")
+        exit(0)
+
+    set_username_pass(data["email"], data["password"])
 
     containername = data["containername"]
     client = docker.from_env()

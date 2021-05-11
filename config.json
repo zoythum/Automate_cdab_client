@@ -1,10 +1,11 @@
 {
 	"containername" : "testsite",
-	"config" : null,
 	"scenarios" : [
 		"TS01"
 	],
 	"targets" : [
 		"SciHub"
-	]
+	],
+	"email": "prova@gmail.com",
+	"password": "ciao"
 }
