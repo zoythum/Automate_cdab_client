@@ -78,8 +78,9 @@ def main():
     if not data["email"] or not data["password"]:
         print("Please make sure you added your email and password into the configuration file")
         exit(0)
-
-    set_username_pass(data["email"], data["password"])
+        
+    if not data["config"]:
+        set_username_pass(data["email"], data["password"])
 
     containername = data["containername"]
     client = docker.from_env()

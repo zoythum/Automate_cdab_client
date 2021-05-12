@@ -1,5 +1,6 @@
 {
 	"containername" : "testsite",
+	"config" : null,
 	"scenarios" : [
 		"TS01"
 	],
